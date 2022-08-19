@@ -54,6 +54,7 @@ class SearchImageViewController: DiaryBaseViewController {
         collectionViewUI()
     }
     
+    
     func navigationUI() {
         navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(chooseClicked))
