@@ -16,6 +16,7 @@ class WriteView: DiaryBaseView {
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.borderWidth = 0.5
         imageView.contentMode = .scaleToFill
+        
         return imageView
     }()
     
@@ -49,6 +50,12 @@ class WriteView: DiaryBaseView {
         return textView
     }()
     
+    let sampleButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .green
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -59,7 +66,7 @@ class WriteView: DiaryBaseView {
     
     
     override func configureUI() {
-        [searchImageView, searchImageButton, titleTextField, dateTextField, contentTextView].forEach { self.addSubview($0) }
+        [searchImageView, searchImageButton, titleTextField, dateTextField, contentTextView, sampleButton].forEach { self.addSubview($0) }
         self.backgroundColor = .white
     }
     
@@ -95,6 +102,10 @@ class WriteView: DiaryBaseView {
             make.leading.equalTo(self).offset(20)
             make.trailing.equalTo(self).offset(-20)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        sampleButton.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(searchImageView).inset(10)
         }
     }
 }

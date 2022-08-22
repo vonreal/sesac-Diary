@@ -14,6 +14,7 @@ class SearchImageView: UICollectionViewCell {
         let img = UIImageView()
         img.contentMode = .scaleToFill
         img.backgroundColor = .lightGray
+        img.sizeToFit()
         return img
     }()
     
