@@ -29,6 +29,17 @@ class WriteViewController: DiaryBaseViewController {
         
         mainView.sampleButton.addTarget(self, action: #selector(sampleButtonClicked), for: .touchUpInside)
         print("Realm is located at:", localRealm.configuration.fileURL!)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(cancleButtonClicked))
+    }
+    
+    @objc func cancleButtonClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func saveButtonClicked() {
+        
     }
     
     // Realm Create Sample

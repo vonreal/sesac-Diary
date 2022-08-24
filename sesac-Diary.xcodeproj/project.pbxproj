@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760F55DC28B5A60100B7C498 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F55DB28B5A60100B7C498 /* Transition+Extension.swift */; };
 		763B2BFF28B3163D000F4FE5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 763B2BFE28B3163D000F4FE5 /* Realm */; };
 		763B2C0128B3163D000F4FE5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763B2C0028B3163D000F4FE5 /* RealmSwift */; };
 		763B2C0428B319E5000F4FE5 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B2C0328B319E5000F4FE5 /* RealmModel.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		760F55DB28B5A60100B7C498 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		763B2C0328B319E5000F4FE5 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		763B2C0628B32AC8000F4FE5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7690601B28AFDC3500828DA6 /* sesac-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sesac-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		760F55DA28B5A5E500B7C498 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				760F55DB28B5A60100B7C498 /* Transition+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		763B2C0228B319D1000F4FE5 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +113,6 @@
 		7690601D28AFDC3500828DA6 /* sesac-Diary */ = {
 			isa = PBXGroup;
 			children = (
-				763B2C0528B32AAB000F4FE5 /* Home */,
 				7690602C28AFDC3600828DA6 /* Info.plist */,
 				7690604328AFE5AC00828DA6 /* Launch Screen.storyboard */,
 				7690605428AFFCE800828DA6 /* APIKey.swift */,
@@ -111,7 +120,9 @@
 				7690605628AFFD3300828DA6 /* EndPoint.swift */,
 				7690602028AFDC3500828DA6 /* SceneDelegate.swift */,
 				7690602728AFDC3600828DA6 /* Assets.xcassets */,
+				763B2C0528B32AAB000F4FE5 /* Home */,
 				763B2C0228B319D1000F4FE5 /* Realm */,
+				760F55DA28B5A5E500B7C498 /* Extension */,
 				7690603628AFE27A00828DA6 /* Utility */,
 				7690603228AFE21F00828DA6 /* View */,
 				7690603328AFE24100828DA6 /* ViewController */,
@@ -238,6 +249,7 @@
 				763B2C0428B319E5000F4FE5 /* RealmModel.swift in Sources */,
 				7690603C28AFE35B00828DA6 /* WriteView.swift in Sources */,
 				7690602128AFDC3500828DA6 /* SceneDelegate.swift in Sources */,
+				760F55DC28B5A60100B7C498 /* Transition+Extension.swift in Sources */,
 				7690604828AFEBF500828DA6 /* SearchImageView.swift in Sources */,
 				7690603828AFE28700828DA6 /* DiaryBaseViewController.swift in Sources */,
 				7690603A28AFE2C200828DA6 /* DiaryBaseView.swift in Sources */,
