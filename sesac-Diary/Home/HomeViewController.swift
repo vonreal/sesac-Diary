@@ -41,6 +41,8 @@ class HomeViewController: DiaryBaseViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        fetchDocumentZipFile()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +54,9 @@ class HomeViewController: DiaryBaseViewController {
     func fetchRealm() {
         // Realm3. Realm 데이터를 정렬해 tasks에 담기
         tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+        
+        print("Realm is located at:", localRealm.configuration.fileURL!)
+
     }
     
     override func configure() {
@@ -60,7 +65,8 @@ class HomeViewController: DiaryBaseViewController {
         
         let sortButton = UIBarButtonItem(title: "정렬", style: .plain, target: self, action: #selector(sortButtonClicked))
         let filterButton = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterButtonClicked))
-        navigationItem.leftBarButtonItems = [sortButton, filterButton]
+        let backupButton = UIBarButtonItem(title: "백업", style: .plain, target: self, action: #selector(backupButtonClicked))
+        navigationItem.leftBarButtonItems = [sortButton, filterButton, backupButton]
     }
     
     override func setConstraints() {
@@ -84,6 +90,11 @@ class HomeViewController: DiaryBaseViewController {
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func backupButtonClicked() {
+        let sb = UIStoryboard(name: "example", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "exampleViewController") as! exampleViewController
+        transition(vc, transitionStyle: .presentFullNavigation)
+    }
 
 }
 

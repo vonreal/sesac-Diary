@@ -30,4 +30,14 @@ extension UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
+    func changeRootView<T: UIViewController>(_ viewController: T) {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        
+        let viewCon = viewController
+        
+        sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: viewCon)
+        sceneDelegate?.window?.makeKeyAndVisible()
+    }
 }
