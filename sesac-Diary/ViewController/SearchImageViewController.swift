@@ -14,12 +14,16 @@ import SwiftyJSON
 
 class SearchImageViewController: DiaryBaseViewController {
 
+    var delegate: SelectImageDelegate?
+    var selectImage: UIImage?
+    var selectIndexPath: IndexPath?
+    
     let searchImageList: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 4
-        let width = UIScreen.main.bounds.width - (spacing * 2)
+        let width = UIScreen.main.bounds.width - (spacing)
         
-        layout.itemSize = CGSize(width: width / 3, height: width / 3)
+        layout.itemSize = CGSize(width: width / 2, height: width / 2)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = spacing
@@ -60,10 +64,17 @@ class SearchImageViewController: DiaryBaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(chooseClicked))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(closeButtonClicked))
     }
-
+    
     @objc func chooseClicked() {
-        NotificationCenter.default.post(name: Notification.Name("imageSend"), object: nil, userInfo: ["url": photos[choose]])
-        navigationController?.popViewController(animated: true)
+//        NotificationCenter.default.post(name: Notification.Name("imageSend"), object: nil, userInfo: ["url": photos[choose]])
+        
+        guard let selectImage = selectImage else {
+            // showAlertMessage(title: "사진을 선택해주세요", button: "확인")
+            return
+        }
+
+        delegate?.sendImageData(image: selectImage)
+        self.dismiss(animated: true)
     }
     
     func searchBarUI() {
@@ -118,7 +129,7 @@ class SearchImageViewController: DiaryBaseViewController {
     }
     
     @objc func closeButtonClicked() {
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
     }
 }
 
@@ -153,11 +164,42 @@ extension SearchImageViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchImageView.identifier, for: indexPath) as? SearchImageView else { return UICollectionViewCell() }
+        
+        cell.layer.borderWidth = selectIndexPath == indexPath ? 4 : 0
+        cell.layer.borderColor = selectIndexPath == indexPath ? UIColor.red.cgColor : nil
+        
+//        cell.setImage(data: photos.dta[indexPath.item].url)
         cell.imageView.kf.setImage(with: URL(string: photos[indexPath.item]))
         return cell
     }
     
+    
+    // userinteractionenabled &
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        choose = indexPath.item
+//        selectImage = photos[indexPath.item]
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SearchImageView else { return }
+        
+        selectImage = cell.imageView.image
+        
+        selectIndexPath = indexPath
+        collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print(#function)
+        selectIndexPath = nil
+        selectImage = nil
+        collectionView.reloadData()
     }
 }
+
+/*
+ 눌렀을때 효과주기
+    1) isSelected로 처리하기
+    2) didSelectItemAt에서 처리하기
+ */
+
+
+/*
+ 
+ */

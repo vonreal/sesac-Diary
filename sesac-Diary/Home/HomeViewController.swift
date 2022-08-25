@@ -80,8 +80,11 @@ class HomeViewController: DiaryBaseViewController {
     
     @objc func plusButtonClicked() {
         let vc = WriteViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        transition(vc, transitionStyle: .presentFullNavigation)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -128,3 +131,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [favorite])
     }
 }
+
+/*
+ 도큐먼트에 이미지 저장할 때 주의점, 삭제할 때 데이터만 삭제하는 것이 아니라 도큐먼트 파일까지도 삭제해줘야한다.
+ */
