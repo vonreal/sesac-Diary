@@ -35,7 +35,7 @@ class HomeViewController: DiaryBaseViewController {
         super.viewDidLoad()
 
         // 데이터 가져오기
-        tasks = repository.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
+        fetchRealm()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,10 +53,7 @@ class HomeViewController: DiaryBaseViewController {
     
     func fetchRealm() {
         // Realm3. Realm 데이터를 정렬해 tasks에 담기
-        tasks = repository.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
-        
-        print("Realm is located at:", repository.localRealm.configuration.fileURL!)
-
+        tasks = repository.fetch()
     }
     
     override func configure() {
@@ -76,12 +73,12 @@ class HomeViewController: DiaryBaseViewController {
     }
     
     @objc func sortButtonClicked() {
-        tasks = repository.localRealm.objects(UserDiary.self).sorted(byKeyPath: "registerDay", ascending: false)
+        tasks = repository.fetchSort("registerDay")
     }
     
     // realm filter query,NSPredicate
     @objc func filterButtonClicked() {
-        tasks = repository.localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS '4'")
+        tasks = repository.fetchFilter()
     }
     
     @objc func plusButtonClicked() {
