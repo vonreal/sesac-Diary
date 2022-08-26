@@ -12,7 +12,7 @@ import RealmSwift
 
 class HomeViewController: DiaryBaseViewController {
 
-    let localRealm = try! Realm()
+    let repository = UserDiaryRepository()
     
     let tableView: UITableView = {
         let view = UITableView()
@@ -35,7 +35,7 @@ class HomeViewController: DiaryBaseViewController {
         super.viewDidLoad()
 
         // 데이터 가져오기
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
+        tasks = repository.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: false)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,9 +53,9 @@ class HomeViewController: DiaryBaseViewController {
     
     func fetchRealm() {
         // Realm3. Realm 데이터를 정렬해 tasks에 담기
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+        tasks = repository.localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
         
-        print("Realm is located at:", localRealm.configuration.fileURL!)
+        print("Realm is located at:", repository.localRealm.configuration.fileURL!)
 
     }
     
@@ -76,12 +76,12 @@ class HomeViewController: DiaryBaseViewController {
     }
     
     @objc func sortButtonClicked() {
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "registerDay", ascending: false)
+        tasks = repository.localRealm.objects(UserDiary.self).sorted(byKeyPath: "registerDay", ascending: false)
     }
     
     // realm filter query,NSPredicate
     @objc func filterButtonClicked() {
-        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS '4'")
+        tasks = repository.localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS '4'")
     }
     
     @objc func plusButtonClicked() {
@@ -116,7 +116,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let favorite = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
             
-            try! self.localRealm.write {
+            try! self.repository.localRealm.write {
                 // 하나의 레코드에서 특정 컬럼 하나만 변경
                 self.tasks[indexPath.row].bookMark = !self.tasks[indexPath.row].bookMark
                 
@@ -145,10 +145,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete =  UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
             
-            try! self.localRealm.write {
-                self.localRealm.delete(self.tasks[indexPath.row])
-            }
             self.removeImageFromDocument(filename: "\(self.tasks[indexPath.row].objectId).jpg")
+            try! self.repository.localRealm.write {
+                self.repository.localRealm.delete(self.tasks[indexPath.row])
+            }
             
             self.fetchRealm()
         }
