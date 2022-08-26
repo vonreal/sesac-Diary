@@ -31,6 +31,7 @@ extension UIViewController {
         
         do {
             try FileManager.default.removeItem(at: fileURL)
+            print("\(fileURL) 삭제 성공")
         } catch let error {
             print(error)
         }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		760F55DC28B5A60100B7C498 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F55DB28B5A60100B7C498 /* Transition+Extension.swift */; };
 		760F55E028B5ADB100B7C498 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F55DF28B5ADB100B7C498 /* HomeTableViewCell.swift */; };
-		760F55E228B5D28000B7C498 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F55E128B5D28000B7C498 /* FileManager+Extension.swift */; };
+		760F55E228B5D28000B7C498 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760F55E128B5D28000B7C498 /* UIViewController+Extension.swift */; };
 		763B2BFF28B3163D000F4FE5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 763B2BFE28B3163D000F4FE5 /* Realm */; };
 		763B2C0128B3163D000F4FE5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 763B2C0028B3163D000F4FE5 /* RealmSwift */; };
 		763B2C0428B319E5000F4FE5 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B2C0328B319E5000F4FE5 /* RealmModel.swift */; };
@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		760F55DB28B5A60100B7C498 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		760F55DF28B5ADB100B7C498 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		760F55E128B5D28000B7C498 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		760F55E128B5D28000B7C498 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		763B2C0328B319E5000F4FE5 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		763B2C0628B32AC8000F4FE5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		766BB98328B6F5C700F92728 /* example.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = example.storyboard; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				760F55DB28B5A60100B7C498 /* Transition+Extension.swift */,
-				760F55E128B5D28000B7C498 /* FileManager+Extension.swift */,
+				760F55E128B5D28000B7C498 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 				7690604828AFEBF500828DA6 /* SearchImageView.swift in Sources */,
 				7690603828AFE28700828DA6 /* DiaryBaseViewController.swift in Sources */,
 				7690603A28AFE2C200828DA6 /* DiaryBaseView.swift in Sources */,
-				760F55E228B5D28000B7C498 /* FileManager+Extension.swift in Sources */,
+				760F55E228B5D28000B7C498 /* UIViewController+Extension.swift in Sources */,
 				7690605528AFFCE800828DA6 /* APIKey.swift in Sources */,
 				7690603E28AFE36B00828DA6 /* WriteViewController.swift in Sources */,
 				763B2C0728B32AC8000F4FE5 /* HomeViewController.swift in Sources */,
