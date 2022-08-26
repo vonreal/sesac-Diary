@@ -129,7 +129,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete =  UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
             
-            repository.deleteImage(item: self.tasks[indexPath.row])
+            self.repository.deleteImage(item: self.tasks[indexPath.row])
             
             self.fetchRealm()
         }

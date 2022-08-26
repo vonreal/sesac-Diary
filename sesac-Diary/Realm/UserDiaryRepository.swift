@@ -9,7 +9,16 @@ import Foundation
 
 import RealmSwift
 
-class UserDiaryRepository {
+// 어떤 함수들이 있는지 한눈에 알아볼 수 있돠 (목차같은 너끰?)
+protocol UserDiaryRepositoryType {
+    func fetch() -> Results<UserDiary>
+    func fetchSort(_ sort: String) -> Results<UserDiary>
+    func fetchFilter() -> Results<UserDiary>
+    func updateBookmark(item: UserDiary)
+    func deleteImage(item: UserDiary)
+}
+
+class UserDiaryRepository: UserDiaryRepositoryType {
     let localRealm = try! Realm()
     
     func fetch() -> Results<UserDiary> {
